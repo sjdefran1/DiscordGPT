@@ -1,7 +1,9 @@
-# bot.py
+# necessary for accesing API Keys/Tokens
 import os
-
+# Discord Client, allows us to connect to discord server
+# As well as run our bot
 import discord
+# 
 import openai
 from dotenv import load_dotenv
 
