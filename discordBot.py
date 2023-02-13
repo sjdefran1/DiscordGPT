@@ -58,3 +58,5 @@ async def on_message(message):
 # Run the Bot
 client.run(DISCORD_TOKEN)
 
+# source C:/Users/sjdef/anaconda3/Scripts/activate base
+
