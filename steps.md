@@ -2,9 +2,9 @@
 
 ---
 
-# Creating a Discord ChatGPT Bot Using Python
+# Connecting to ChatGPT W/ Python
 
-## Prerequistes For Entire Project
+## Prerequistes For Project
 
 - Working Python Installation on your device
 - PIP (python package manager)
@@ -29,18 +29,22 @@
 To be able to connect to ChatGPT using Python we will need an API key, this will uniquely identify our OpenAI account to the code we are writing.
 
 **continued on next page**
+
+<!-- <br>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
+<br> -->
 
 ## First navigate to [OpenAi Homepage](https://platform.openai.com/overview)
 
-![](ss/openAiAcct.png)
+<img src = "ss/openAiAcct.png" width="450px" style="vertical-align:middle"></img>
+
+<!-- ![](ss/openAiAcct.png) -->
+<br>
 
 - In the top right of the screen click login and enter your credentials
   > You may have to verify that you are a human
@@ -53,7 +57,7 @@ To be able to connect to ChatGPT using Python we will need an API key, this will
 
     If something goes wrong you can always create a new API key
 
-### <span style="color: #fc727b">It is very important that you never share your API key w/ anyone else!</span>
+### <span style="color: #fc727b">**It is very important that you never share your API key w/ anyone else!**</span>
 
 ---
 
@@ -67,24 +71,49 @@ To be able to connect to ChatGPT using Python we will need an API key, this will
     ```bash
     pip install python-dotenv
     ```
-- Now create a file called .env wherever you want this project to live, I reccomend creating a folder to hold these files, call it whatever you like for example DiscordOpenAI
-  - Inside .env add your api key as follows
-    ```
-    OPENAI_API_KEY={Your api key}
-    ```
-    > Make sure to replace {your api key} with the key we just generated, **do not include the brackets**
-- Create a new python file called test.py & import the necessary packages by adding the following lines
+- Create a folder wherever you would like this to live, I'm calling mine PyGPT
+  <img src = "ss/folderCreate.png" width="550px" style="vertical-align:middle"></img>
+
+<!-- ![](ss/folderCreate.png) -->
+
+<br>
+<br>
+<br>
+
+- Now create a file called **.env** wherever you want this project to live, I reccomend creating a folder to hold these files, call it whatever you like for example PyGPT
+
+![](ss/env.png)
+
+- Inside **.env** add your api key as follows
+
+  ```
+  OPENAI_API_KEY={Your api key}
+  ```
+
+  > Make sure to replace {your api key} with the key we just generated, **do not include the brackets**
+
+- Create a new **python file called test.py** inside this same directory
+
+  **See below**
+
+![](ss/test.png)
+
+- Import the necessary packages by adding the following lines **into test.py**
+
   ```python
   import os
   import openai
   from dotenv import load_dotenv
   ```
-- Next we are going to load our .env file into our python file using dotenv
+
+- Next we are going to load our .env file **into test.py** using dotenv
   ```python
   load_dotenv()
   ```
 
-### Now the fun part, lets connect to chatGPT and generate our first response.
+## Now the fun part, lets connect to ChatGPT and generate our first response!
+
+> Inside **test.py** lets add the following code
 
 ```python
 # Load in our API key, because of dotenv we don't have to mess with our actual
@@ -116,9 +145,44 @@ response = openai.Completion.create(
 print(response['choices'][0]['text'])
 ```
 
+## For Reference here is the entire **test.py**
+
+```py
+import os
+import openai
+from dotenv import load_dotenv
+load_dotenv()
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+gpt_prompt = "Say hello five different ways"
+
+response = openai.Completion.create(
+  engine="text-davinci-002",
+  prompt=gpt_prompt,
+  temperature=0.5,
+  max_tokens=256,
+  top_p=1.0,
+  frequency_penalty=0.0,
+  presence_penalty=0.0
+)
+
+print(response['choices'][0]['text'])
+
+```
+
 ---
 
-### If all goes well here we should get our response printed to the console, heres mine!
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### If all goes well here, when we run test.py we should get our response **printed to the console**, heres mine!
 
 ```
 Hello,
@@ -134,7 +198,9 @@ Yo.
 
 ---
 
-# Discord
+## Congratulations, have fun messing with different prompts and see the power of ChatGPT!
+
+<!-- # Discord
 
 > [Discord Developer Getting Started Guide](https://discord.com/developers/docs/getting-started), information below could become deprecated, this link should always have the most up-to-date information
 
@@ -149,4 +215,4 @@ Yo.
 3. Create Application
 4. Create Bot
 5. Generate Bot url link
-   1. Paste link into browser to activate
+   1. Paste link into browser to activate -->
