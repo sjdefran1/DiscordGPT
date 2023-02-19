@@ -1,5 +1,5 @@
 # DiscordGPT
-discord bot creating for english 314 instructions assignment.
+discord bot created for english 314 instructions assignment.
 
 See steps.md/steps.pdf for connecting to chatGPT using python.
 
